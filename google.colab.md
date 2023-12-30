@@ -7,5 +7,5 @@
 !python entry_with_update.py --preset turbo --share 
 ```
 
-!# Zip up output and download
-` !zip -r /content/output.zip /content/Fooocus/outputs/`
+Zip up output and download  
+`!zip -r /content/output.zip /content/Fooocus/outputs/`
