@@ -531,7 +531,7 @@ with shared.gradio_root:
         ctrls += [input_image_checkbox, current_tab]
         ctrls += [uov_method, uov_input_image]
         ctrls += [outpaint_selections, inpaint_input_image, inpaint_additional_prompt, inpaint_mask_image]
-        print(f'show me ip_controls {type(ip_ctrls)} size: {len(ip_ctrls)} data: {ip_ctrls}')
+        print(f'[DEBUG] show me ip_controls {type(ip_ctrls)} size: {len(ip_ctrls)} data: {ip_ctrls}')
         ctrls += ip_ctrls
 
         state_is_generating = gr.State(False)
