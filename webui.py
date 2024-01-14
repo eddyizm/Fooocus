@@ -30,7 +30,7 @@ def generate_clicked(*args):
         model_management.interrupt_processing = False
 
     # outputs=[progress_html, progress_window, progress_gallery, gallery]
-
+    print(f'[DEBUG] generate click args/ctrls: {[x for x in list(args)]}')
     execution_start_time = time.perf_counter()
     task = worker.AsyncTask(args=list(args))
     finished = False
@@ -152,7 +152,7 @@ with shared.gradio_root:
                             ip_ad_cols = []
                             for _ in range(4):
                                 with gr.Column():
-                                    ip_image = grh.Image(label='Image', source='upload', type='numpy', show_label=False, height=300)
+                                    ip_image = grh.Image(label='Image FINDME', source='upload', type='numpy', show_label=False, height=300)
                                     ip_images.append(ip_image)
                                     ip_ctrls.append(ip_image)
                                     with gr.Column(visible=False) as ad_col:
@@ -173,7 +173,7 @@ with shared.gradio_root:
 
                                         ip_type.change(lambda x: flags.default_parameters[x], inputs=[ip_type], outputs=[ip_stop, ip_weight], queue=False, show_progress=False)
                                     ip_ad_cols.append(ad_col)
-                        ip_advanced = gr.Checkbox(label='Advanced', value=False, container=False)
+                        ip_advanced = gr.Checkbox(label='Advanced SHOW?', value=False, container=False)
                         gr.HTML('* \"Image Prompt\" is powered by Fooocus Image Mixture Engine (v1.0.1). <a href="https://github.com/lllyasviel/Fooocus/discussions/557" target="_blank">\U0001F4D4 Document</a>')
 
                         def ip_advance_checked(x):
