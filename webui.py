@@ -30,7 +30,10 @@ def generate_clicked(*args):
         model_management.interrupt_processing = False
 
     # outputs=[progress_html, progress_window, progress_gallery, gallery]
-    print(f'[DEBUG] generate click args/ctrls: {[x for x in list(args)]}')
+    
+    print(f'[DEBUG] generate click length: {len(args)}')
+    for k, v in enumerate(args):
+        print(f'[DEBUG] key: {k}\n value {v}')
     execution_start_time = time.perf_counter()
     task = worker.AsyncTask(args=list(args))
     finished = False
