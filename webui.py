@@ -31,9 +31,9 @@ def generate_clicked(*args):
 
     # outputs=[progress_html, progress_window, progress_gallery, gallery]
     
-    print(f'[DEBUG] generate click length: {len(args)}')
-    for k, v in enumerate(args):
-        print(f'[DEBUG] key: {k}\n value {v}')
+    # print(f'[DEBUG] generate click length: {len(args)}')
+    # for k, v in enumerate(args):
+    #     print(f'[DEBUG] key: {k}\n value {v}')
     execution_start_time = time.perf_counter()
     task = worker.AsyncTask(args=list(args))
     finished = False
@@ -531,7 +531,7 @@ with shared.gradio_root:
         ctrls += [input_image_checkbox, current_tab]
         ctrls += [uov_method, uov_input_image]
         ctrls += [outpaint_selections, inpaint_input_image, inpaint_additional_prompt, inpaint_mask_image]
-        print(f'[DEBUG] show me ip_controls {type(ip_ctrls)} size: {len(ip_ctrls)} data: {ip_ctrls}')
+        # print(f'[DEBUG] show me ip_controls {type(ip_ctrls)} size: {len(ip_ctrls)} data: {ip_ctrls}')
         ctrls += ip_ctrls
 
         state_is_generating = gr.State(False)
