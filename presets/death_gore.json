@@ -1,5 +1,5 @@
 {
-    "default_model": "Deliberate_v3.safetensors",
+    "default_model": "realisticStockPhoto_v10.safetensors",
     "default_refiner": "None",
     "default_refiner_switch": 0.5,
     "default_loras": [
@@ -37,7 +37,7 @@
     "default_aspect_ratio": "1024*1024",
     "default_overwrite_step": 6,
     "checkpoint_downloads": {
-        "Deliberate_v3.safetensors": "https://huggingface.co/XpucT/Deliberate/resolve/main/Deliberate_v3.safetensors?download=true"
+        "realisticStockPhoto_v10.safetensors": "https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticStockPhoto_v10.safetensors"
     },
     "embeddings_downloads": {},
     "lora_downloads": {
