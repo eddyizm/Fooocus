@@ -31,8 +31,7 @@
     "default_performance": "Speed",
     "default_prompt": "",
     "default_prompt_negative": "",
-    "default_styles": [
-    ],
+    "default_styles": [],
     "default_aspect_ratio": "1024*1024",
     "default_overwrite_step": 6,
     "checkpoint_downloads": {

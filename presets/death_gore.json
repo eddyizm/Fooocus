@@ -1,11 +1,11 @@
 {
-    "default_model": "realisticStockPhoto_v10.safetensors",
+    "default_model": "DreamShaperXL_Turbo_dpmppSdeKarras_half_pruned_6.safetensors",
     "default_refiner": "None",
     "default_refiner_switch": 0.5,
     "default_loras": [
         [
-            "Deathia_yiu_v20.safetensors",
-            0.5
+            "ab0m.safetensors",
+            0.8
         ],
         [
             "None",
@@ -24,7 +24,7 @@
             1.0
         ]
     ],
-    "default_cfg_scale": 2.0,
+    "default_cfg_scale": 7.0,
     "default_sample_sharpness": 3.0,
     "default_sampler": "dpmpp_sde",
     "default_scheduler": "karras",
@@ -37,12 +37,13 @@
     "default_aspect_ratio": "1024*1024",
     "default_overwrite_step": 6,
     "checkpoint_downloads": {
-        "realisticStockPhoto_v10.safetensors": "https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticStockPhoto_v10.safetensors"
+        "DreamShaperXL_Turbo_dpmppSdeKarras_half_pruned_6.safetensors": "https://huggingface.co/Lykon/dreamshaper-xl-turbo/resolve/main/DreamShaperXL_Turbo_dpmppSdeKarras_half_pruned_6.safetensors"
     },
     "embeddings_downloads": {},
     "lora_downloads": {
-        "Deathia_yiu_v20.safetensors": "https://civitai.com/api/download/models/191457?type=Model&format=SafeTensor",
-        "death2.safetensors": "https://civitai.com/api/download/models/29813?type=Model&format=SafeTensor&size=full&fp=fp16",
-        "BodHor-V1.safetensors": "https://civitai.com/api/download/models/55777?type=Model&format=SafeTensor"
+        "ab0m.safetensors": "https://civitai.com/api/download/models/138296?type=Model&format=SafeTensor",
+        "EdobHorrorLandscape_XL_v1.0.safetensors": "https://civitai.com/api/download/models/253952?type=Model&format=SafeTensor",
+        "EnvyTrypophobiaXL01.safetensors": "https://civitai.com/api/download/models/251533?type=Model&format=SafeTensor",
+        "[LoRA][Horror]s4w3d0ffBlend_v10.safetensors": "https://civitai.com/api/download/models/9326?type=Model&format=SafeTensor&size=full&fp=fp16"
     }
 }
