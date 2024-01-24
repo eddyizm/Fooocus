@@ -37,7 +37,7 @@ def worker():
     import fooocus_version
 
     from modules.sdxl_styles import apply_style, apply_wildcards, fooocus_expansion
-    from modules.private_logger import log
+    from modules.private_logger import log, create_full_prompt_spoiler
     from extras.expansion import safe_str
     from modules.util import remove_empty_str, HWC3, resize_image, \
         get_image_shape_ceil, set_image_shape_ceil, get_shape_ceil, resample_image, erode_or_dilate
@@ -804,6 +804,7 @@ def worker():
                         if n != 'None':
                             d.append((f'LoRA {li + 1}', f'{n} : {w}'))
                     d.append(('Version', 'v' + fooocus_version.version))
+                    d.append(('Full raw prompt', create_full_prompt_spoiler(task['positive'], task['negative'])))
                     img_paths.append(log(x, d, output_format))
 
                 yield_result(async_task, img_paths, do_not_show_finished_images=len(tasks) == 1)
