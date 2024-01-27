@@ -103,7 +103,8 @@ def log(img, dic, output_format=None) -> str:
         item += f"<tr><td class='key'>{key}</td><td class='value'>{value_txt}</td></tr>\n"
     item += "</table>"
 
-    js_txt = urllib.parse.quote(json.dumps({k: v for k, v in dic if k != "Full raw prompt"}, indent=0), safe='')
+    js_txt = urllib.parse.quote(json.dumps({k: v for k, v in dic}, indent=0), safe='')
+    # js_txt = urllib.parse.quote(json.dumps({k: v for k, v in dic if k != "Full raw prompt"}, indent=0), safe='')
     item += f"</br><button onclick=\"to_clipboard('{js_txt}')\">Copy to Clipboard</button>"
 
     item += "</td>"
