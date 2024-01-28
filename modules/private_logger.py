@@ -11,12 +11,22 @@ from tempfile import gettempdir
 log_cache = {}
 
 def get_path_output() -> str:
-    return args_manager.args.temp_path if args_manager.args.disable_image_log else modules.config.path_outputs
-
+    print(f'''
+          args temp path: {args_manager.args.temp_path}
+          disable image log: {args_manager.args.disable_image_log}
+          config.path outputs: {modules.config.path_outputs}
+         args output path: {args_manager.args.output_path}
+          ''')
+    path_output = args_manager.args.temp_path if args_manager.args.disable_image_log else modules.config.path_outputs
+    if not args_manager.args.disable_image_log and args_manager.args.output_path:
+        return args_manager.args.output_path
+    print(f'get_path_output {path_output}')
+    return path_output
 
 def get_current_html_path(output_format=None):
     output_format = output_format if output_format else modules.config.default_output_format
     path_outputs = get_path_output()
+    print(f'get_current html path {path_outputs}')
     date_string, local_temp_filename, only_name = generate_temp_filename(folder=path_outputs,
                                                                          extension=output_format)
     html_name = os.path.join(os.path.dirname(local_temp_filename), 'log.html')
