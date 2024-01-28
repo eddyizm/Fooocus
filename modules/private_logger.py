@@ -10,10 +10,14 @@ from tempfile import gettempdir
 
 log_cache = {}
 
+def get_path_output() -> str:
+    return args_manager.args.temp_path if args_manager.args.disable_image_log else modules.config.path_outputs
+
 
 def get_current_html_path(output_format=None):
     output_format = output_format if output_format else modules.config.default_output_format
-    date_string, local_temp_filename, only_name = generate_temp_filename(folder=modules.config.path_outputs,
+    path_outputs = get_path_output()
+    date_string, local_temp_filename, only_name = generate_temp_filename(folder=path_outputs,
                                                                          extension=output_format)
     html_name = os.path.join(os.path.dirname(local_temp_filename), 'log.html')
     return html_name
@@ -25,7 +29,7 @@ def create_full_prompt_spoiler(positives, negatives):
 
 
 def log(img, dic, output_format=None) -> str:
-    path_outputs = args_manager.args.temp_path if args_manager.args.disable_image_log else modules.config.path_outputs
+    path_outputs = get_path_output()
     output_format = output_format if output_format else modules.config.default_output_format
     date_string, local_temp_filename, only_name = generate_temp_filename(folder=path_outputs, extension=output_format)
     os.makedirs(os.path.dirname(local_temp_filename), exist_ok=True)
