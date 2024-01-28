@@ -47,4 +47,6 @@ if args_parser.args.output_path:
     print(f'Updating temp path arg to {args_parser.args.output_path}')
     args_parser.args.temp_path = args_parser.args.output_path
 
+print(f'printing args output path {args_parser.args.output_path}')
+print(f'printing args temp path {args_parser.args.temp_path}')
 args = args_parser.args
