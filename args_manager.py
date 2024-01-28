@@ -43,4 +43,7 @@ if args_parser.args.disable_in_browser:
 if args_parser.args.temp_path is None:
     args_parser.args.temp_path = os.path.join(gettempdir(), 'Fooocus')
 
+if args_parser.args.output_path is not None:
+    args_parser.args.temp_path = args_parser.args.output_path
+
 args = args_parser.args
