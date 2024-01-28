@@ -34,7 +34,6 @@ args_parser.args = args_parser.parser.parse_args()
 args_parser.args.always_offload_from_vram = not args_parser.args.disable_offload_from_vram
 
 if args_parser.args.disable_analytics:
-    import os
     os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 
 if args_parser.args.disable_in_browser:
@@ -42,9 +41,5 @@ if args_parser.args.disable_in_browser:
 
 if args_parser.args.temp_path is None:
     args_parser.args.temp_path = os.path.join(gettempdir(), 'Fooocus')
-
-# if args_parser.args.output_path:
-#     print(f'Updating temp path arg to {args_parser.args.output_path}')
-#     args_parser.args.temp_path = args_parser.args.output_path
 
 args = args_parser.args
