@@ -25,7 +25,7 @@ def create_full_prompt_spoiler(positives, negatives):
 
 def log(img, dic, output_format=None) -> str:
     output_format = output_format if output_format else modules.config.default_output_format
-    date_string, local_temp_filename, only_name = generate_temp_filename(folder=modules.config.path_outputsoutputs, extension=output_format)
+    date_string, local_temp_filename, only_name = generate_temp_filename(folder=modules.config.path_outputs, extension=output_format)
     os.makedirs(os.path.dirname(local_temp_filename), exist_ok=True)
     
     if output_format == 'jpg':
