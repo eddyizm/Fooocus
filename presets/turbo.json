@@ -1,5 +1,5 @@
 {
-    "default_model": "DreamShaperXL_Turbo_dpmppSdeKarras_full_v2.safetensors",
+    "default_model": "DreamShaperXL_Turbo_v2.safetensors",
     "default_refiner": "None",
     "default_refiner_switch": 0.5,
     "default_loras": [
@@ -36,7 +36,7 @@
     "default_advanced_checkbox": true,
     "default_overwrite_step": 6,
     "checkpoint_downloads": {
-        "DreamShaperXL_Turbo_dpmppSdeKarras_full_v2.safetensors": "https://civitai.com/api/download/models/333449?type=Model&format=SafeTensor&size=full&fp=fp16"
+        "DreamShaperXL_Turbo_v2.safetensors": "https://huggingface.co/Lykon/dreamshaper-xl-v2-turbo/resolve/main/DreamShaperXL_Turbo_v2.safetensors"
     },
     "embeddings_downloads": {},
     "lora_downloads": {}
