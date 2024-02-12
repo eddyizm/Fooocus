@@ -32,15 +32,11 @@
     "default_performance": "Speed",
     "default_prompt": "",
     "default_prompt_negative": "",
-    "default_styles": [
-        "Fooocus V2",
-        "Fooocus Enhance",
-        "Fooocus Sharp"
-    ],
+    "default_styles": [],
     "default_aspect_ratio": "1024*1024",
     "default_overwrite_step": 6,
     "checkpoint_downloads": {
-        "sdxlUnstableDiffusers_v11.safetensors": "https://civitai.com/api/download/models/276923"
+        "sdxlUnstableDiffusers_v11.safetensors": "https://huggingface.co/Yamer-AI/SDXL_Unstable_Diffusers/resolve/main/Unstable%20Diffusers%20V11%20%2B%20RunDiffusion.safetensors"
     },
     "embeddings_downloads": {},
     "lora_downloads": {}
