@@ -22,6 +22,7 @@ def worker():
     import traceback
     import math
     import numpy as np
+    import cv2
     import torch
     import time
     import shared
@@ -79,16 +80,20 @@ def worker():
         return
 
     def build_image_wall(async_task):
-        results = async_task.results
+        results = []
 
-        if len(results) < 2:
+        if len(async_task.results) < 2:
             return
 
-        for img in results:
+        for img in async_task.results:
+            if isinstance(img, str) and os.path.exists(img):
+                img = cv2.imread(img)
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             if not isinstance(img, np.ndarray):
                 return
             if img.ndim != 3:
                 return
+            results.append(img)
 
         H, W, C = results[0].shape
 
@@ -553,8 +558,8 @@ def worker():
                 direct_return = False
 
             if direct_return:
-                d = [('Upscale (Fast)', '2x')]
-                uov_input_image_path = log(uov_input_image, d, output_format)
+                d = [('Upscale (Fast)', 'upscale_fast', '2x')]
+                uov_input_image_path = log(uov_input_image, d, output_format=output_format)
                 yield_result(async_task, uov_input_image_path, do_not_show_finished_images=True)
                 return
 
