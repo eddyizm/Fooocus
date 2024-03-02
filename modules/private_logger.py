@@ -5,10 +5,12 @@ import json
 import urllib.parse
 
 from PIL import Image
+from PIL.PngImagePlugin import PngInfo
 from modules.util import generate_temp_filename
-from tempfile import gettempdir
+from modules.meta_parser import MetadataParser, get_exif
 
 log_cache = {}
+
 
 def get_current_html_path(output_format=None):
     output_format = output_format if output_format else modules.config.default_output_format
@@ -18,20 +20,29 @@ def get_current_html_path(output_format=None):
     return html_name
 
 
-def create_full_prompt_spoiler(positives, negatives):
-    return f"""<details><summary>Positive</summary>{','.join(positives)}</details>
-    <details><summary>Negative</summary>{','.join(negatives)}</details>"""
-
-
-def log(img, dic, output_format=None) -> str:
+def log(img, metadata, metadata_parser: MetadataParser | None = None, output_format=None) -> str:
+    path_outputs = args_manager.args.temp_path if args_manager.args.disable_image_log else modules.config.path_outputs
     output_format = output_format if output_format else modules.config.default_output_format
-    date_string, local_temp_filename, only_name = generate_temp_filename(folder=modules.config.path_outputs, extension=output_format)
+    date_string, local_temp_filename, only_name = generate_temp_filename(folder=path_outputs, extension=output_format)
     os.makedirs(os.path.dirname(local_temp_filename), exist_ok=True)
-    
-    if output_format == 'jpg':
-        Image.fromarray(img).save(local_temp_filename, quality=95, optimize=True, progressive=True)
+
+    parsed_parameters = metadata_parser.parse_string(metadata) if metadata_parser is not None else ''
+    image = Image.fromarray(img)
+
+    if output_format == 'png':
+        if parsed_parameters != '':
+            pnginfo = PngInfo()
+            pnginfo.add_text('parameters', parsed_parameters)
+            pnginfo.add_text('fooocus_scheme', metadata_parser.get_scheme().value)
+        else:
+            pnginfo = None
+        image.save(local_temp_filename, pnginfo=pnginfo)
+    elif output_format == 'jpg':
+        image.save(local_temp_filename, quality=95, optimize=True, progressive=True, exif=get_exif(parsed_parameters, metadata_parser.get_scheme().value) if metadata_parser else Image.Exif())
+    elif output_format == 'webp':
+        image.save(local_temp_filename, quality=95, lossless=False, exif=get_exif(parsed_parameters, metadata_parser.get_scheme().value) if metadata_parser else Image.Exif())
     else:
-        Image.fromarray(img).save(local_temp_filename)
+        image.save(local_temp_filename)
 
     if args_manager.args.disable_image_log:
         return local_temp_filename
@@ -43,7 +54,7 @@ def log(img, dic, output_format=None) -> str:
         "body { background-color: #121212; color: #E0E0E0; } "
         "a { color: #BB86FC; } "
         ".metadata { border-collapse: collapse; width: 100%; } "
-        ".metadata .key { width: 15%; } "
+        ".metadata .label { width: 15%; } "
         ".metadata .value { width: 85%; font-weight: bold; } "
         ".metadata th, .metadata td { border: 1px solid #4d4d4d; padding: 4px; } "
         ".image-container img { height: auto; max-width: 512px; display: block; padding-right:10px; } "
@@ -96,13 +107,13 @@ def log(img, dic, output_format=None) -> str:
     item = f"<div id=\"{div_name}\" class=\"image-container\"><hr><table><tr>\n"
     item += f"<td><a href=\"{only_name}\" target=\"_blank\"><img src='{only_name}' onerror=\"this.closest('.image-container').style.display='none';\" loading='lazy'/></a><div>{only_name}</div></td>"
     item += "<td><table class='metadata'>"
-    for key, value in dic:
-        value_txt = str(value).replace('\n', ' <br/> ')
-        item += f"<tr><td class='key'>{key}</td><td class='value'>{value_txt}</td></tr>\n"
+    for label, key, value in metadata:
+        value_txt = str(value).replace('\n', ' </br> ')
+        item += f"<tr><td class='label'>{label}</td><td class='value'>{value_txt}</td></tr>\n"
     item += "</table>"
 
-    js_txt = urllib.parse.quote(json.dumps({k: v for k, v in dic}, indent=0), safe='')
-    item += f"<br/><button onclick=\"to_clipboard('{js_txt}')\">Copy to Clipboard</button>"
+    js_txt = urllib.parse.quote(json.dumps({k: v for _, k, v in metadata}, indent=0), safe='')
+    item += f"</br><button onclick=\"to_clipboard('{js_txt}')\">Copy to Clipboard</button>"
 
     item += "</td>"
     item += "</tr></table></div>\n\n"

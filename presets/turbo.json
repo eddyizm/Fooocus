@@ -34,6 +34,8 @@
     "default_styles": [],
     "default_aspect_ratio": "1024*1024",
     "default_advanced_checkbox": true,
+    "default_save_metadata_to_images": true,
+    "default_metadata_scheme": "a1111",
     "default_overwrite_step": 8,
     "checkpoint_downloads": {
         "DreamShaperXL_Turbo_v2.safetensors": "https://huggingface.co/Lykon/dreamshaper-xl-v2-turbo/resolve/main/DreamShaperXL_Turbo_v2.safetensors"
