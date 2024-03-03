@@ -47,6 +47,6 @@
         "ab0m.safetensors": "https://civitai.com/api/download/models/138296?type=Model&format=SafeTensor",
         "EdobHorrorLandscape_XL_v1.0.safetensors": "https://civitai.com/api/download/models/253952?type=Model&format=SafeTensor",
         "EnvyTrypophobiaXL01.safetensors": "https://civitai.com/api/download/models/251533?type=Model&format=SafeTensor",
-        "[LoRA][Horror]s4w3d0ffBlend_v10.safetensors": "https://civitai.com/api/download/models/9326?type=Model&format=SafeTensor&size=full&fp=fp16"
+
     }
 }
