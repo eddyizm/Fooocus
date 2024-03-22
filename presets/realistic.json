@@ -1,26 +1,31 @@
 {
     "default_model": "realisticStockPhoto_v20.safetensors",
-    "default_refiner": "",
+    "default_refiner": "None",
     "default_refiner_switch": 0.5,
     "default_advanced_checkbox": true,
     "default_loras": [
         [
+            true,
             "SDXL_FILM_PHOTOGRAPHY_STYLE_BetaV0.4.safetensors",
             0.25
         ],
         [
+            true,
             "None",
             1.0
         ],
         [
+            true,
             "None",
             1.0
         ],
         [
+            true,
             "None",
             1.0
         ],
         [
+            true,
             "None",
             1.0
         ]
