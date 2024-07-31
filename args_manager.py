@@ -52,6 +52,7 @@ args_parser.args = args_parser.parser.parse_args()
 args_parser.args.always_offload_from_vram = not args_parser.args.disable_offload_from_vram
 
 if args_parser.args.disable_analytics:
+    import os
     os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 
 if args_parser.args.disable_in_browser:

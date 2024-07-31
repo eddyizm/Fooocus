@@ -41,5 +41,8 @@
         "DreamShaperXL_Turbo_v2_1.safetensors": "https://huggingface.co/Lykon/dreamshaper-xl-v2-turbo/resolve/main/DreamShaperXL_Turbo_v2_1.safetensors"
     },
     "embeddings_downloads": {},
-    "lora_downloads": {}
+    "lora_downloads": {},
+    "previous_default_models": [
+        "DreamShaper_8_pruned.safetensors"
+    ]
 }
