@@ -24,7 +24,7 @@
             1.0
         ]
     ],
-    "default_cfg_scale": 2.0,
+    "default_cfg_scale": 1.4,
     "default_sample_sharpness": 3.0,
     "default_sampler": "dpmpp_sde",
     "default_scheduler": "karras",
@@ -36,7 +36,7 @@
     "default_advanced_checkbox": true,
     "default_save_metadata_to_images": true,
     "default_metadata_scheme": "a1111",
-    "default_overwrite_step": 8,
+    "default_overwrite_step": 6,
     "checkpoint_downloads": {
         "DreamShaperXL_Turbo_v2_1.safetensors": "https://huggingface.co/Lykon/dreamshaper-xl-v2-turbo/resolve/main/DreamShaperXL_Turbo_v2_1.safetensors"
     },
